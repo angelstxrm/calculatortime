@@ -1,4 +1,4 @@
-<!-- calculator/templates/calculator/time_calculator.html -->
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,27 +6,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Calculator</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'calculator/styles.css' %}">
 </head>
 <body>
-    <h1>Time Calculator</h1>
-    <form method="post">
-        {% csrf_token %}
-        <label for="time1">Time 1 (HH:MM):</label>
-        <input type="text" id="time1" name="time1" required>
-        <br>
-        <label for="time2">Time 2 (HH:MM):</label>
-        <input type="text" id="time2" name="time2" required>
-        <br>
-        <label for="operation">Operation:</label>
-        <select id="operation" name="operation" required>
-            <option value="add">Add</option>
-            <option value="subtract">Subtract</option>
-        </select>
-        <br>
-        <button type="submit">Calculate</button>
-    </form>
-    {% if result %}
-        <h2>Result: {{ result }}</h2>
-    {% endif %}
+    <div class="calculator-container">
+        <h1>Time Calculator</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="time1">Время 1 (ЧЧ:MM):</label>
+            <input type="text" id="time1" name="time1" required>
+            
+            <label for="time2">Время 2 (ЧЧ:MM):</label>
+            <input type="text" id="time2" name="time2" required>
+            
+            <label for="operation">Операции:</label>
+            <select id="operation" name="operation" required>
+                <option value="add">Сложение</option>
+                <option value="subtract">Вычитание</option>
+            </select>
+            
+            <button type="submit">Рассчитать</button>
+        </form>
+        {% if result %}
+            <div class="result">Результат: {{ result }}</div>
+        {% endif %}
+    </div>
+    <footer>
+        <p>&copy; 2024 Time Calculator. Developer DANIL BELENKIN</p>
+    </footer>
 </body>
 </html>

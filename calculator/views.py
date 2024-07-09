@@ -22,6 +22,6 @@ def time_calculator(request):
 
             result = result_time.strftime('%H:%M')
         except ValueError:
-            result = 'Invalid time format. Please use HH:MM.'
+            result = 'Пожалуйста, введите корректный формат. ЧЧ:ММ.'
         
     return render(request, 'calculator/time_calculator.html', {'result': result})
