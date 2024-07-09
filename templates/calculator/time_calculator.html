@@ -13,16 +13,52 @@
         <h1>Time Calculator</h1>
         <form method="post">
             {% csrf_token %}
-            <label for="time1">Время 1 (ЧЧ:MM):</label>
-            <input type="text" id="time1" name="time1" required>
             
+            <label for="time1">Вреия 1 (ЧЧ:MM):</label>
+            <input list="time-options" id="time1" name="time1" class="time-input" required>
+            <datalist id="time-options">
+                <option value="08:00">
+                <option value="09:00">
+                <option value="10:00">
+                <option value="11:00">
+                <option value="12:00">
+                <option value="13:00">
+                <option value="14:00">
+                <option value="15:00">
+                <option value="16:00">
+                <option value="17:00">
+                <option value="18:00">
+                <option value="19:00">
+                <option value="20:00">
+                <option value="21:00">
+            </datalist>
+
             <label for="time2">Время 2 (ЧЧ:MM):</label>
-            <input type="text" id="time2" name="time2" required>
+            <input list="time-options-2" id="time2" name="time2" class="time-input" required>
+            <datalist id="time-options-2">
+                <option value="00:00">
+                <option value="00:15">
+                <option value="00:30">
+                <option value="00:45">
+                <option value="01:00">
+                <option value="01:15">
+                <option value="01:30">
+                <option value="01:45">
+                <option value="02:00">
+                <option value="02:15">
+                <option value="02:30">
+                <option value="02:45">
+                <option value="03:00">
+                <option value="03:15">
+                <option value="03:30">
+                <option value="03:45">
+                <option value="04:00">
+            </datalist>
             
             <label for="operation">Операции:</label>
             <select id="operation" name="operation" required>
-                <option value="add">Сложение</option>
-                <option value="subtract">Вычитание</option>
+                <option value="add">Сложить</option>
+                <option value="subtract">Вычислить</option>
             </select>
             
             <button type="submit">Рассчитать</button>
@@ -32,7 +68,7 @@
         {% endif %}
     </div>
     <footer>
-        <p>&copy; 2024 Time Calculator. Developer DANIL BELENKIN</p>
+        <p>&copy; 2024 Time Calculator. Developer DANIL BELENKIN.</p>
     </footer>
 </body>
 </html>
