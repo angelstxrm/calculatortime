@@ -1,0 +1,32 @@
+<!-- calculator/templates/calculator/time_calculator.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Calculator</title>
+</head>
+<body>
+    <h1>Time Calculator</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="time1">Time 1 (HH:MM):</label>
+        <input type="text" id="time1" name="time1" required>
+        <br>
+        <label for="time2">Time 2 (HH:MM):</label>
+        <input type="text" id="time2" name="time2" required>
+        <br>
+        <label for="operation">Operation:</label>
+        <select id="operation" name="operation" required>
+            <option value="add">Add</option>
+            <option value="subtract">Subtract</option>
+        </select>
+        <br>
+        <button type="submit">Calculate</button>
+    </form>
+    {% if result %}
+        <h2>Result: {{ result }}</h2>
+    {% endif %}
+</body>
+</html>
