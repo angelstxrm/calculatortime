@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Calculator</title>
+    <link rel="shortcut icon" href="{% static 'calculator/iconcalculator.png' %}" type="ikonka-site">
     <link rel="stylesheet" type="text/css" href="{% static 'calculator/styles.css' %}">
 </head>
 <body>
@@ -14,7 +15,7 @@
         <form method="post">
             {% csrf_token %}
             
-            <label for="time1">Вреия 1 (ЧЧ:MM):</label>
+            <label for="time1">Время 1 (ЧЧ:MM):</label>
             <input list="time-options" id="time1" name="time1" class="time-input" required>
             <datalist id="time-options">
                 <option value="08:00">
