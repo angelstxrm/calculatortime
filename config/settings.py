@@ -12,9 +12,9 @@ load_dotenv(dotenv_path=env_path)
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = 'django-insecure-j2wtgg%@p4&%*q8el$6=pq)rvn%g+yzpr6vtvn=r0ot2*okv=m'
+SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG') == 'True'
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.timecalculator.ru', 'timecalculator.ru']
 
 
 # Application definition
@@ -109,6 +109,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_ROOT = '/home/angelstxrm/calculator-dev/static/calculator'
 
 # Default primary key field type
 
