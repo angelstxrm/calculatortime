@@ -25,3 +25,4 @@ def time_calculator(request):
             result = 'Пожалуйста, введите корректный формат. ЧЧ:ММ.'
         
     return render(request, 'calculator/time_calculator.html', {'result': result})
+

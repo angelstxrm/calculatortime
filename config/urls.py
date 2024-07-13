@@ -19,8 +19,9 @@ from django.urls import path
 from django.shortcuts import render
 from django.conf.urls import handler404
 
-from calculator.views import  time_calculator
-
+from calculator.views import time_calculator
+from tracker.views import time_tracker
+    
 def custom_404(request, exception):
     return render(request, 'calculator/404.html', status=404)
 
@@ -29,4 +30,5 @@ handler404 = custom_404
 urlpatterns = [
     path('timecalculatoradmin/', admin.site.urls),
     path('', time_calculator, name='time_calculator'),
+    path('time_tracker', time_tracker, name='time_tracker'),
 ]

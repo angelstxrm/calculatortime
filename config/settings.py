@@ -14,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG') == 'True'
-ALLOWED_HOSTS = ['www.timecalculator.ru', 'timecalculator.ru']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -30,6 +30,7 @@ INSTALLED_APPS = [
 
 MY_APPLICATION = [
     'calculator',
+    'tracker',
 ]
 
 INSTALLED_APPS += MY_APPLICATION

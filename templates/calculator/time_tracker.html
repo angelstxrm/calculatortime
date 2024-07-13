@@ -1,0 +1,132 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Tracker</title>
+    <link rel="shortcut icon" href="{% static 'calculator/iconcalculator.png' %}" type="image/png">
+    <link rel="stylesheet" type="text/css" href="{% static 'calculator/styles.css' %}">
+    <style>
+        .link-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .link-container a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .link-container a:hover {
+            text-decoration: underline;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .header-links {
+            display: flex;
+            gap: 20px;
+        }
+        .header-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .header-links a:hover {
+            text-decoration: underline;
+        }
+        .tracker-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* изменено на 20px ширину тени */
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            display: grid;
+            gap: 10px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="datetime-local"],
+        button {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .entry-list {
+            margin-top: 20px;
+        }
+        .entry {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="tracker-container">
+        <h1>Time Tracker</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="id_description">Описание:</label>
+            <input type="text" id="id_description" name="description" required>
+            <label for="id_start_time">Начало:</label>
+            <input type="datetime-local" id="id_start_time" name="start_time" required>
+            <label for="id_end_time">Конец:</label>
+            <input type="datetime-local" id="id_end_time" name="end_time" required>
+            <button type="submit">Добавить запись</button>
+            <div class="link-container">
+                <a href="{% url 'time_calculator' %}">Time Calculator</a>
+            </div>
+        </form>
+        <div class="entry-list">
+            <h2>Записи:</h2>
+            {% if entries %}
+                {% for entry in entries %}
+                    <div class="entry">
+                        <p><strong>Описание:</strong> {{ entry.description }}</p>
+                        <p><strong>Начало:</strong> {{ entry.start_time }}</p>
+                        <p><strong>Конец:</strong> {{ entry.end_time }}</p>
+                        <p><strong>Длительность:</strong> {{ entry.duration }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Записи отсутствуют.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

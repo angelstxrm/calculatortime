@@ -8,6 +8,20 @@
     <title>Time Calculator</title>
     <link rel="shortcut icon" href="{% static 'calculator/iconcalculator.png' %}" type="ikonka-site">
     <link rel="stylesheet" type="text/css" href="{% static 'calculator/styles.css' %}">
+    <style>
+        .link-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .link-container a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .link-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <div class="calculator-container">
@@ -67,10 +81,12 @@
         {% if result %}
             <div class="result">Результат: {{ result }}</div>
         {% endif %}
+        <div class="link-container">
+            <a href="{% url 'time_tracker' %}">Time Tracker</a>
+        </div>
     </div>
     <footer>
         <p>&copy; 2024 Time Calculator. Developer <a href="https://t.me/deppkidd">Danil Belenkin</a>.</p>
     </footer>
-   
 </body>
 </html>
