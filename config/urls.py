@@ -27,6 +27,6 @@ def custom_404(request, exception):
 handler404 = custom_404
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('timecalculatoradmin/', admin.site.urls),
     path('', time_calculator, name='time_calculator'),
 ]
